@@ -9,24 +9,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;600&display=swap"
         rel="stylesheet" />
     <style>
         :root {
-            --ink: #141313;
-            --ink-soft: #2c2b2a;
-            --paper: #f6efe7;
-            --paper-strong: #efe3d7;
-            --clay: #b85b3b;
-            --moss: #1f4a45;
-            --mist: #d9c9b8;
-            --cream: #fff8ef;
-            --shadow: 0 22px 60px rgba(20, 19, 19, 0.16);
-            --shadow-soft: 0 10px 30px rgba(20, 19, 19, 0.1);
-            --radius: 24px;
-            --container: min(1180px, 92vw);
-            --nav-height: 76px;
-            --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+            --text-primary: #0a0a0a;
+            --text-secondary: #4a5568;
+            --text-tertiary: #8893a1;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --border: #e2e8f0;
+            --accent: #2563eb;
+            --accent-dark: #1e40af;
+            --container: min(1200px, 90vw);
+            --nav-height: 64px;
         }
 
         * {
@@ -40,74 +36,42 @@
         }
 
         body {
-            font-family: "Alegreya", "Times New Roman", serif;
-            color: var(--ink);
-            background: var(--paper);
-            line-height: 1.65;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background:
-                radial-gradient(circle at 10% 20%, rgba(184, 91, 59, 0.2), transparent 55%),
-                radial-gradient(circle at 90% 15%, rgba(31, 74, 69, 0.2), transparent 55%),
-                radial-gradient(circle at 20% 80%, rgba(217, 201, 184, 0.5), transparent 50%),
-                linear-gradient(120deg, #f8f1e8, #f3e7d9 55%, #f7efe6 100%);
-            z-index: -2;
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background-image: repeating-linear-gradient(0deg,
-                    rgba(20, 19, 19, 0.05),
-                    rgba(20, 19, 19, 0.05) 1px,
-                    transparent 1px,
-                    transparent 4px),
-                repeating-linear-gradient(90deg,
-                    rgba(20, 19, 19, 0.04),
-                    rgba(20, 19, 19, 0.04) 1px,
-                    transparent 1px,
-                    transparent 5px);
-            opacity: 0.35;
-            mix-blend-mode: multiply;
-            pointer-events: none;
-            z-index: -1;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
         }
 
         a {
-            color: inherit;
+            color: var(--accent);
             text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--accent-dark);
         }
 
         .container {
             width: var(--container);
             margin: 0 auto;
+            padding: 0 20px;
         }
 
         .section {
-            padding: 110px 0;
+            padding: 80px 0;
             position: relative;
         }
 
         .section-title {
-            font-size: clamp(2rem, 4vw, 3.1rem);
-            letter-spacing: 0.02em;
-            margin-bottom: 28px;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: var(--text-primary);
         }
 
         .muted {
-            color: var(--ink-soft);
-        }
-
-        .panel {
-            background: var(--cream);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(20, 19, 19, 0.08);
+            color: var(--text-secondary);
         }
 
         .navbar {
@@ -116,126 +80,117 @@
             left: 0;
             right: 0;
             z-index: 1200;
-            transition: background 0.3s ease, box-shadow 0.3s ease;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border);
+            transition: box-shadow 0.2s ease;
         }
 
         .navbar.scrolled {
-            background: rgba(246, 239, 231, 0.82);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow-soft);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
         }
 
         .nav-inner {
             height: var(--nav-height);
-            display: grid;
-            grid-template-columns: auto 1fr auto;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 20px;
         }
 
         .logo {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            font-family: "IBM Plex Mono", monospace;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            font-size: 0.75rem;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-primary);
         }
 
         .logo-badge {
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
             display: grid;
             place-items: center;
-            background: conic-gradient(from 90deg, var(--clay), #f1c8a6, var(--moss), var(--clay));
-            color: #fff;
+            background: var(--accent);
+            color: white;
             font-weight: 700;
-            box-shadow: var(--shadow-soft);
+            font-size: 0.8rem;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 18px;
-            justify-content: center;
+            gap: 32px;
             list-style: none;
         }
 
         .nav-link {
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.7rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            padding: 6px 4px;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.3s ease, color 0.3s ease;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
         }
 
         .nav-link:hover,
         .nav-link.active {
-            color: var(--clay);
-            border-color: var(--clay);
+            color: var(--accent);
         }
 
         .nav-cta {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 10px 18px;
-            border-radius: 999px;
-            border: 1px solid var(--moss);
-            color: var(--moss);
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-            background: #fff6ed;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            background: transparent;
+            cursor: pointer;
         }
 
         .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-soft);
+            background: var(--accent);
+            color: white;
         }
 
         .menu-btn {
             display: none;
-            width: 42px;
-            height: 42px;
-            border-radius: 14px;
-            border: 1px solid rgba(20, 19, 19, 0.2);
-            background: #fff6ed;
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: var(--bg-primary);
             cursor: pointer;
             position: relative;
         }
 
         .menu-btn span {
             position: absolute;
-            left: 10px;
-            right: 10px;
-            height: 2px;
-            background: var(--ink);
+            left: 8px;
+            right: 8px;
+            height: 1.5px;
+            background: var(--text-primary);
             border-radius: 2px;
             transition: all 0.3s ease;
         }
 
         .menu-btn span:nth-child(1) {
-            top: 14px;
+            top: 11px;
         }
 
         .menu-btn span:nth-child(2) {
-            top: 21px;
+            top: 17px;
         }
 
         .menu-btn span:nth-child(3) {
-            top: 28px;
+            top: 23px;
         }
 
         .menu-btn.open span:nth-child(1) {
-            transform: translateY(7px) rotate(45deg);
+            transform: translateY(6px) rotate(45deg);
         }
 
         .menu-btn.open span:nth-child(2) {
@@ -243,7 +198,7 @@
         }
 
         .menu-btn.open span:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
+            transform: translateY(-6px) rotate(-45deg);
         }
 
         .mobile-menu {
@@ -251,13 +206,12 @@
             top: var(--nav-height);
             left: 0;
             right: 0;
-            background: rgba(246, 239, 231, 0.96);
-            backdrop-filter: blur(10px);
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border);
             transform: translateY(-110%);
             opacity: 0;
             pointer-events: none;
-            transition: transform 0.35s ease, opacity 0.35s ease;
-            border-bottom: 1px solid rgba(20, 19, 19, 0.1);
+            transition: transform 0.3s ease, opacity 0.3s ease;
             z-index: 1100;
         }
 
@@ -269,69 +223,67 @@
 
         .mobile-menu a {
             display: block;
-            width: var(--container);
-            margin: 0 auto;
-            padding: 14px 4px;
-            font-family: "IBM Plex Mono", monospace;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            font-size: 0.7rem;
-            border-bottom: 1px solid rgba(20, 19, 19, 0.08);
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
         }
 
         .hero {
-            min-height: 100vh;
+            min-height: calc(100vh - var(--nav-height));
             display: grid;
             align-items: center;
-            padding-top: calc(var(--nav-height) + 40px);
+            padding-top: 40px;
+            border-bottom: 1px solid var(--border);
         }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-            gap: 32px;
+            grid-template-columns: 1fr;
+            gap: 48px;
             align-items: center;
         }
 
         .hero-copy {
-            padding: 32px;
+            max-width: 600px;
         }
 
         .hero h1 {
-            font-size: clamp(2.7rem, 6vw, 4.8rem);
-            line-height: 1.05;
-            margin-bottom: 14px;
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            font-weight: 700;
         }
 
         .gradient-name {
-            color: var(--clay);
+            color: var(--accent);
         }
 
         .hero-subtitle {
-            font-size: clamp(1.1rem, 2.2vw, 1.5rem);
-            font-family: "IBM Plex Mono", monospace;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--moss);
-            margin-bottom: 12px;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-weight: 500;
         }
 
         .typing-wrap {
-            min-height: 34px;
-            margin-bottom: 26px;
-            font-size: 1.05rem;
-            color: var(--ink-soft);
+            min-height: 28px;
+            margin-bottom: 24px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            height: 28px;
         }
 
         .typing-text {
-            color: var(--ink);
-            font-weight: 700;
+            color: var(--text-primary);
+            font-weight: 600;
         }
 
         .typing-cursor {
             margin-left: 2px;
             opacity: 1;
-            animation: blink 1s steps(1) infinite;
+            animation: blink 0.8s steps(1) infinite;
         }
 
         @keyframes blink {
@@ -342,7 +294,7 @@
 
         .hero-cta {
             display: flex;
-            gap: 14px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
@@ -350,190 +302,166 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid transparent;
-            border-radius: 999px;
-            padding: 12px 22px;
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 20px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
         .btn-primary {
-            background: var(--moss);
-            color: var(--cream);
-            box-shadow: var(--shadow-soft);
+            background: var(--accent);
+            color: white;
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
+            background: var(--accent-dark);
         }
 
         .btn-ghost {
-            border-color: var(--moss);
-            color: var(--moss);
+            border: 1px solid var(--accent);
+            color: var(--accent);
             background: transparent;
         }
 
+        .btn-ghost:hover {
+            background: var(--accent);
+            color: white;
+        }
+
         .hero-aside {
-            display: grid;
-            gap: 18px;
+            display: none;
         }
 
         .hero-card {
-            padding: 20px 22px;
-            border-radius: 22px;
-            border: 1px solid rgba(20, 19, 19, 0.1);
-            background: #fffaf3;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .hero-card strong {
-            font-family: "IBM Plex Mono", monospace;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            font-size: 0.65rem;
-            color: var(--clay);
-            display: block;
-            margin-bottom: 10px;
+            display: none;
         }
 
         .hero-metrics {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 12px;
+            display: none;
         }
 
         .metric {
-            padding: 14px 12px;
-            border-radius: 16px;
-            border: 1px solid rgba(20, 19, 19, 0.1);
-            background: var(--paper-strong);
-            text-align: center;
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.7rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
+            display: none;
         }
 
         .about-grid {
             display: grid;
-            grid-template-columns: minmax(0, 0.45fr) minmax(0, 0.55fr);
-            gap: 30px;
-            align-items: center;
+            grid-template-columns: 1fr;
+            gap: 48px;
+            align-items: start;
         }
 
         .avatar-wrap {
-            padding: 10px;
-            border-radius: var(--radius);
-            background: linear-gradient(145deg, #fff4e8, #f2e1d2);
-            box-shadow: var(--shadow-soft);
+            display: none;
         }
 
         .avatar {
-            position: relative;
-            border-radius: 18px;
-            overflow: hidden;
-            background: #f0e1d2;
+            display: none;
         }
 
         .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 28%;
-            display: block;
+            display: none;
         }
 
         .avatar-fallback {
             display: none;
-            position: absolute;
-            inset: 0;
-            place-items: center;
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.85rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
         }
 
         .avatar-fallback.show {
-            display: grid;
+            display: none;
         }
 
         .about-copy {
-            padding: 32px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .about-copy p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 24px;
         }
 
         .stats {
-            margin-top: 22px;
+            margin-top: 32px;
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
         }
 
         .stat {
-            padding: 14px 12px;
-            border-radius: 16px;
-            border: 1px dashed rgba(20, 19, 19, 0.2);
-            font-family: "IBM Plex Mono", monospace;
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            letter-spacing: 0.16em;
-            background: #fff4e8;
+            padding: 16px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: var(--bg-primary);
             text-align: center;
+            color: var(--text-secondary);
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 22px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
         }
 
         .project-card {
-            padding: 24px;
-            border-radius: 22px;
-            border: 1px solid rgba(20, 19, 19, 0.12);
-            background: #fffdf8;
-            box-shadow: var(--shadow-soft);
+            padding: 28px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-primary);
             display: grid;
-            gap: 14px;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            gap: 16px;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
         .project-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow);
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
         }
 
         .project-card.special {
-            border-color: rgba(184, 91, 59, 0.4);
-            background: #fff6ed;
+            border-color: var(--accent);
+            background: var(--bg-secondary);
         }
 
         .badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             padding: 6px 12px;
-            border-radius: 999px;
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.65rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            border: 1px solid rgba(20, 19, 19, 0.12);
-            background: #f5e7da;
-            color: var(--ink-soft);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            width: fit-content;
         }
 
         .badge.gold {
-            background: #f1d4b3;
-            border-color: rgba(184, 91, 59, 0.4);
+            background: #fef3c7;
+            border-color: #fcd34d;
+            color: #78350f;
         }
 
         .project-card h3 {
-            font-size: 1.45rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .tags {
@@ -543,93 +471,98 @@
         }
 
         .tag {
-            border-radius: 999px;
+            border-radius: 4px;
             padding: 4px 10px;
-            font-size: 0.7rem;
-            font-family: "IBM Plex Mono", monospace;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            background: var(--paper-strong);
-            border: 1px solid rgba(20, 19, 19, 0.12);
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
         }
 
         .project-links {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
+            margin-top: 8px;
         }
 
         .project-link {
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.7rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--moss);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
         }
 
         .try-live {
-            border: 1px solid rgba(184, 91, 59, 0.6);
-            background: #f5dac4;
-            color: var(--ink);
+            border: 1px solid var(--accent);
+            background: transparent;
+            color: var(--accent);
             padding: 8px 14px;
-            border-radius: 999px;
+            border-radius: 6px;
             cursor: pointer;
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.7rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .try-live:hover {
+            background: var(--accent);
+            color: white;
         }
 
         .skills-wrap {
-            padding: 28px;
-            border: 1px solid rgba(20, 19, 19, 0.12);
-            background: #fffaf2;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-soft);
+            padding: 32px;
+            border: 1px solid var(--border);
+            background: var(--bg-secondary);
+            border-radius: 8px;
         }
 
         .skill-group {
-            margin-bottom: 18px;
+            margin-bottom: 24px;
+        }
+
+        .skill-group:last-child {
+            margin-bottom: 0;
         }
 
         .skill-group strong {
             display: inline-block;
-            margin-bottom: 10px;
-            font-family: "IBM Plex Mono", monospace;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            color: var(--moss);
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            font-weight: 700;
         }
 
         .skill-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
 
         .skill-pill {
-            padding: 8px 14px;
-            border-radius: 999px;
-            border: 1px solid rgba(20, 19, 19, 0.12);
-            background: #f3e6d8;
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.7rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            background: var(--bg-primary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
         }
 
         .timeline {
             display: grid;
-            gap: 18px;
+            gap: 20px;
         }
 
         .timeline-item {
-            padding: 22px;
-            border-radius: 20px;
-            border: 1px solid rgba(20, 19, 19, 0.12);
-            background: #fff6ed;
-            box-shadow: var(--shadow-soft);
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-primary);
         }
 
         .timeline-head {
@@ -638,60 +571,76 @@
             justify-content: space-between;
             gap: 12px;
             flex-wrap: wrap;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+        }
+
+        .timeline-head h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
         }
 
         .contact-card {
-            padding: 34px;
-            border-radius: 26px;
-            background: #172c2a;
-            color: var(--cream);
-            box-shadow: var(--shadow);
+            padding: 40px;
+            border-radius: 8px;
+            background: var(--text-primary);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .contact-card .section-title,
         .contact-card .muted {
-            color: var(--cream);
+            color: white;
+        }
+
+        .contact-card .muted {
+            opacity: 0.8;
         }
 
         .contact-form {
             display: grid;
             gap: 12px;
-            margin-top: 20px;
+            margin-top: 24px;
         }
 
         .form-note {
             margin-top: 10px;
-            color: #f2e5d7;
+            color: rgba(255, 255, 255, 0.8);
             min-height: 24px;
+            font-size: 0.9rem;
         }
 
         .input,
         textarea {
             width: 100%;
-            border-radius: 14px;
+            border-radius: 6px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             background: rgba(255, 255, 255, 0.08);
-            color: #fff8ef;
+            color: white;
             font-family: inherit;
             padding: 12px 14px;
             outline: none;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .input::placeholder,
+        textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
         }
 
         .input:focus,
         textarea:focus {
-            border-color: rgba(255, 255, 255, 0.6);
-            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.12);
         }
 
         textarea {
-            min-height: 130px;
+            min-height: 120px;
             resize: vertical;
         }
 
         .socials {
-            margin-top: 18px;
+            margin-top: 24px;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -699,58 +648,59 @@
         }
 
         .social-link {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
             display: grid;
             place-items: center;
             text-decoration: none;
-            color: #f5e7da;
-            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.22s ease, border-color 0.22s ease;
+            transition: all 0.2s ease;
         }
 
         .social-link:hover {
-            transform: translateY(-3px);
-            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
         }
 
         .contact-meta {
-            margin-top: 12px;
-            color: #efe3d6;
+            margin-top: 24px;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.95rem;
         }
 
         .contact-meta a {
-            color: #efe3d6;
+            color: white;
         }
 
         .footer {
-            padding: 26px 0 36px;
-            border-top: 1px solid rgba(20, 19, 19, 0.1);
+            padding: 24px 0;
+            border-top: 1px solid var(--border);
             text-align: center;
-            color: var(--ink-soft);
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
         }
 
         .to-top {
             position: fixed;
             right: 20px;
             bottom: 20px;
-            width: 44px;
-            height: 44px;
-            border-radius: 13px;
-            border: 1px solid rgba(20, 19, 19, 0.2);
-            background: #fff6ed;
-            color: var(--ink);
-            font-size: 1.1rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 1rem;
             cursor: pointer;
             display: grid;
             place-items: center;
             opacity: 0;
             transform: translateY(10px);
             pointer-events: none;
-            transition: opacity 0.25s ease, transform 0.25s ease;
+            transition: all 0.2s ease;
             z-index: 900;
         }
 
@@ -760,11 +710,16 @@
             pointer-events: auto;
         }
 
+        .to-top:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
         .chatbot-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(20, 19, 19, 0.65);
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1400;
             opacity: 0;
             pointer-events: none;
@@ -780,16 +735,16 @@
             position: fixed;
             left: 50%;
             bottom: 0;
-            width: min(980px, 94vw);
-            height: min(84vh, 820px);
+            width: min(900px, 94vw);
+            height: min(80vh, 760px);
             transform: translate(-50%, 105%);
-            border-radius: 18px 18px 0 0;
-            border: 1px solid rgba(20, 19, 19, 0.2);
-            background: #fef9f2;
+            border-radius: 8px 8px 0 0;
+            border: 1px solid var(--border);
+            background: var(--bg-primary);
             z-index: 1500;
             overflow: hidden;
-            transition: transform 0.38s cubic-bezier(0.2, 0.8, 0.2, 1);
-            box-shadow: 0 -30px 60px rgba(20, 19, 19, 0.3);
+            transition: transform 0.35s ease;
+            box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .chatbot-modal.open {
@@ -797,44 +752,47 @@
         }
 
         .chatbot-head {
-            height: 54px;
+            height: 50px;
             padding: 0 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid rgba(20, 19, 19, 0.12);
-            background: rgba(20, 19, 19, 0.04);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-secondary);
         }
 
         .chatbot-head strong {
-            font-family: "IBM Plex Mono", monospace;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            font-size: 0.7rem;
+            font-weight: 600;
+            font-size: 0.95rem;
         }
 
         .chatbot-close {
-            width: 34px;
-            height: 34px;
-            border-radius: 10px;
-            border: 1px solid rgba(20, 19, 19, 0.25);
-            background: rgba(255, 255, 255, 0.6);
-            color: var(--ink);
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            border: none;
+            background: transparent;
+            color: var(--text-primary);
             cursor: pointer;
             font-size: 1.1rem;
+            transition: all 0.2s ease;
+        }
+
+        .chatbot-close:hover {
+            background: var(--border);
         }
 
         .chatbot-frame {
             width: 100%;
-            height: calc(100% - 54px);
+            height: calc(100% - 50px);
             border: 0;
-            background: #fff;
+            background: var(--bg-primary);
         }
 
         .reveal {
             opacity: 0;
-            transform: translateY(36px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .reveal.in {
@@ -848,7 +806,7 @@
             }
 
             .projects-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
 
             .about-grid {
@@ -866,11 +824,19 @@
             }
 
             .section {
-                padding: 92px 0;
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
             }
 
             .projects-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
             }
 
             .hero-cta {
@@ -878,10 +844,18 @@
             }
 
             .btn {
-                flex: 1 1 180px;
+                flex: 1 1 140px;
             }
 
             .contact-card {
+                padding: 24px;
+            }
+
+            .about-copy {
+                padding: 24px;
+            }
+
+            .skills-wrap {
                 padding: 24px;
             }
         }
@@ -889,12 +863,25 @@
         @media (max-width: 520px) {
             .chatbot-modal {
                 width: 100vw;
-                height: 88vh;
-                border-radius: 14px 14px 0 0;
+                height: 90vh;
+                border-radius: 12px 12px 0 0;
             }
 
             .stats {
                 grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .skill-list {
+                gap: 6px;
+            }
+
+            .skill-pill {
+                padding: 6px 10px;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -944,7 +931,7 @@
                     <h1>
                         Hi, I'm <span class="gradient-name">Harsh Pagda</span>
                     </h1>
-                    <p class="hero-subtitle">Full Stack Developer &amp; AI Enthusiast</p>
+                    <p class="hero-subtitle">Full Stack Developer</p>
                     <p class="typing-wrap">
                         <span class="typing-text" id="typingText"></span><span class="typing-cursor">|</span>
                     </p>
@@ -956,28 +943,6 @@
                             target="_blank" rel="noopener noreferrer">
                             Download Resume
                         </a>
-                    </div>
-                </div>
-
-                <div class="hero-aside reveal">
-                    <div class="hero-card">
-                        <strong>Portfolio Focus</strong>
-                        <p class="muted">
-                            I'm a passionate developer who loves building full-stack web applications and AI-powered
-                            tools.
-                            Currently pursuing my degree, I've shipped 2 real-world projects and completed an IBM AI
-                            internship
-                            where I built a production chatbot using Botpress.
-                        </p>
-                    </div>
-                    <div class="hero-card">
-                        <strong>Highlights</strong>
-                        <div class="hero-metrics">
-                            <div class="metric">2 Projects Shipped</div>
-                            <div class="metric">1 IBM Internship</div>
-                            <div class="metric">1 AI Chatbot Built</div>
-                            <div class="metric">∞ Lines of Code</div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -997,17 +962,14 @@
                 <article class="about-copy panel">
                     <h2 class="section-title">About Me</h2>
                     <p class="muted">
-                        I'm a passionate developer who loves building full-stack web applications and AI-powered tools.
-                        Currently pursuing my degree, I've shipped 2 real-world projects and completed an IBM AI
-                        internship
-                        where I built a production chatbot using Botpress.
+                        I'm a full-stack developer with a passion for building scalable web applications and implementing AI solutions. I have hands-on experience with modern frontend frameworks, backend systems, and cloud deployment. During my IBM internship, I built and deployed production-grade AI chatbots using Botpress and NLP technologies.
                     </p>
 
                     <div class="stats">
-                        <div class="stat">2 Projects Shipped</div>
-                        <div class="stat">1 IBM Internship</div>
-                        <div class="stat">1 AI Chatbot Built</div>
-                        <div class="stat">∞ Lines of Code</div>
+                        <div class="stat">2+ Projects Shipped</div>
+                        <div class="stat">IBM AI Internship</div>
+                        <div class="stat">Full Stack Development</div>
+                        <div class="stat">Problem Solving Focus</div>
                     </div>
                 </article>
             </div>
@@ -1021,15 +983,13 @@
                         <span class="badge">Agriculture Tech</span>
                         <h3>Agriather</h3>
                         <p class="muted">
-                            A full-stack web platform connecting farmers with modern agri-resources. Features include
-                            crop advisory,
-                            market pricing data, and community forums designed to digitize agricultural workflows.
+                            A responsive web platform for agricultural resource management. Built with vanilla JavaScript and HTML5, featuring real-time market data integration, crop advisory systems, and community discussion forums. Fully responsive design with mobile-first approach.
                         </p>
                         <div class="tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
                             <span class="tag">JavaScript</span>
-                            <span class="tag">Responsive UI</span>
+                            <span class="tag">Responsive Design</span>
                         </div>
                         <div class="project-links">
                             <a class="project-link" href="https://agriather.vercel.app/" target="_blank"
@@ -1043,15 +1003,13 @@
                         <span class="badge">Content Platform</span>
                         <h3>BlogSphere</h3>
                         <p class="muted">
-                            A dynamic blogging platform where users can create, read, and share articles. Built with a
-                            clean UI,
-                            markdown support, and user authentication for a seamless writing experience.
+                            A modern blogging platform with user authentication, markdown support, and rich text editing. Features include article creation, commenting system, user profiles, and search functionality. Deployed on Vercel with optimized performance.
                         </p>
                         <div class="tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
                             <span class="tag">JavaScript</span>
                             <span class="tag">Markdown</span>
+                            <span class="tag">Authentication</span>
+                            <span class="tag">UI/UX</span>
                         </div>
                         <div class="project-links">
                             <a class="project-link" href="https://blog-sphere-rust.vercel.app/" target="_blank"
@@ -1065,18 +1023,16 @@
                         <span class="badge gold">AI / Internship</span>
                         <h3>IBM AI Chatbot</h3>
                         <p class="muted">
-                            Built during an IBM project-based internship. An intelligent conversational chatbot powered
-                            by Botpress
-                            that handles user queries with NLP. Deployed and shareable via Botpress cloud.
+                            An intelligent conversational AI system built during IBM's project-based internship. Powered by Botpress and advanced NLP, deployed on Botpress Cloud for scalability. Handles natural language queries with contextual understanding.
                         </p>
                         <div class="tags">
                             <span class="tag">Botpress</span>
                             <span class="tag">NLP</span>
                             <span class="tag">AI</span>
-                            <span class="tag">JavaScript</span>
+                            <span class="tag">Cloud Deployment</span>
                         </div>
                         <div class="project-links">
-                            <button class="try-live" id="openChatbot">Try It Live ↗</button>
+                            <button class="try-live" id="openChatbot">Try It Live →</button>
                         </div>
                     </article>
                 </div>
@@ -1092,8 +1048,19 @@
                         <div class="skill-list">
                             <span class="skill-pill">HTML5</span>
                             <span class="skill-pill">CSS3</span>
-                            <span class="skill-pill">JavaScript</span>
+                            <span class="skill-pill">JavaScript ES6+</span>
                             <span class="skill-pill">Responsive Design</span>
+                            <span class="skill-pill">DOM Manipulation</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <strong>Backend &amp; Databases</strong>
+                        <div class="skill-list">
+                            <span class="skill-pill">Node.js</span>
+                            <span class="skill-pill">REST APIs</span>
+                            <span class="skill-pill">SQL</span>
+                            <span class="skill-pill">Database Design</span>
                         </div>
                     </div>
 
@@ -1102,18 +1069,18 @@
                         <div class="skill-list">
                             <span class="skill-pill">Botpress</span>
                             <span class="skill-pill">NLP</span>
-                            <span class="skill-pill">AI Chatbots</span>
-                            <span class="skill-pill">GitHub Copilot</span>
+                            <span class="skill-pill">AI Integration</span>
+                            <span class="skill-pill">Machine Learning Basics</span>
                         </div>
                     </div>
 
                     <div class="skill-group">
-                        <strong>Other</strong>
+                        <strong>DevOps &amp; Tools</strong>
                         <div class="skill-list">
-                            <span class="skill-pill">Git</span>
-                            <span class="skill-pill">GitHub</span>
+                            <span class="skill-pill">Git & GitHub</span>
+                            <span class="skill-pill">Vercel</span>
                             <span class="skill-pill">VS Code</span>
-                            <span class="skill-pill">Problem Solving</span>
+                            <span class="skill-pill">Cloud Deployment</span>
                         </div>
                     </div>
                 </div>
@@ -1130,9 +1097,17 @@
                             <span class="badge">2026 • AI Developer Intern</span>
                         </div>
                         <p class="muted">
-                            Designed and deployed an AI-powered chatbot using Botpress as part of IBM's project-based
-                            internship.
-                            Gained hands-on experience in conversational AI, NLP pipelines, and cloud deployment.
+                            Designed and deployed production-grade conversational AI systems using Botpress. Implemented NLP pipelines for natural language understanding, handled chatbot training and optimization, and managed cloud deployment on Botpress Cloud infrastructure.
+                        </p>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-head">
+                            <h3>Full-Stack Development</h3>
+                            <span class="badge">2024 - Present • Self-Directed Projects</span>
+                        </div>
+                        <p class="muted">
+                            Built and shipped multiple full-stack web applications. Focused on responsive design, clean code architecture, and user experience optimization. Gained experience with frontend frameworks, backend development, and deployment pipelines.
                         </p>
                     </article>
                 </div>
@@ -1142,8 +1117,8 @@
         <section class="section" id="contact">
             <div class="container reveal">
                 <div class="contact-card">
-                    <h2 class="section-title">Let's Build Something Together</h2>
-                    <p class="muted">Open to internships, collaborations, and freelance projects.</p>
+                    <h2 class="section-title">Let's Work Together</h2>
+                    <p class="muted">I'm available for freelance projects, internships, and full-time opportunities. Let me know how I can help.</p>
 
                     <form class="contact-form" id="contactForm">
                         <input class="input" type="text" name="name" placeholder="Your Name" required />
@@ -1177,8 +1152,8 @@
                     </div>
 
                     <p class="contact-meta">
-                        Email: <a href="mailto:harshpagda605@gmail.com">harshpagda605@gmail.com</a> | Phone:
-                        <a href="tel:+919328441710">+91 9328441710</a>
+                        <strong>Email:</strong> <a href="mailto:harshpagda605@gmail.com">harshpagda605@gmail.com</a> |
+                        <strong>Phone:</strong> <a href="tel:+919328441710">+91 9328441710</a>
                     </p>
                 </div>
             </div>
@@ -1186,7 +1161,7 @@
     </main>
 
     <footer class="footer">
-        <div class="container">Designed &amp; Built by Harsh Pagda · 2026</div>
+        <div class="container">© 2026 Harsh Pagda. Built with clean code and attention to detail.</div>
     </footer>
 
     <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
@@ -1286,7 +1261,7 @@
         reveals.forEach((item) => revealObserver.observe(item));
 
         const typingText = document.getElementById("typingText");
-        const lines = ["I build Web Apps", "I train AI Chatbots", "I solve real problems"];
+        const lines = ["Building scalable web apps", "Implementing AI solutions", "Shipping quality code"];
 
         let lineIndex = 0;
         let charIndex = 0;
